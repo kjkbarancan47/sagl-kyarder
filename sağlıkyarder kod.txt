@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAĞLIK-YAR-DER | Sağlık Çalışanları Yardımlaşma ve Dayanışma Derneği 2026</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#0B2545',
+                            darkNavy: '#051329',
+                            red: '#D62828',
+                            crimson: '#B8001F',
+                            gold: '#C59B27',
+                            goldLight: '#E5BD54',
+                            accent: '#134074',
+                            lightBg: '#F8FAFC'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'ekg-line': 'ekgDash 2.5s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-8px)' },
+                        },
+                        ekgDash: {
+                            '0%': { strokeDashoffset: '1000' },
+                            '100%': { strokeDashoffset: '0' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Modern Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0B2545;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D62828;
+        }
+        
+        /* Glassmorphism Effect */
+        .glass-header {
+            background: rgba(11, 37, 69, 0.94);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .glass-card-dark {
+            background: rgba(11, 37, 69, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(197, 155, 39, 0.25);
+        }
+
+        /* Animated Glowing Text */
+        .glow-text-gold {
+            text-shadow: 0 0 15px rgba(197, 155, 39, 0.35);
+        }
+        .glow-text-red {
+            text-shadow: 0 0 18px rgba(214, 40, 40, 0.4);
+        }
+
+        /* EKG Pulse SVG Line Animation */
+        .ekg-path {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: dash 3s linear infinite;
+        }
+        @keyframes dash {
+            to { stroke-dashoffset: 0; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased overflow-x-hidden">
+
+    <!-- TOP ANNOUNCEMENT & CONTACT BAR -->
+    <div class="bg-brand-darkNavy text-slate-300 text-xs py-2 px-4 border-b border-slate-800/80 relative z-50">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
+            
+            <!-- Left Info & Live Dynamic Ticker -->
+            <div class="flex items-center space-x-3 w-full md:w-auto justify-between md:justify-start">
+                <div class="flex items-center space-x-2 flex-shrink-0">
+                    <span class="relative flex h-2.5 w-2.5">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-red"></span>
+                    </span>
+                    <span class="bg-brand-red text-white text-[10px] font-bold px-2 py-0.5 rounded tracking-wider uppercase">DUYURU 2026</span>
+                </div>
+                <div class="overflow-hidden h-5 text-ellipsis whitespace-nowrap max-w-[280px] sm:max-w-md md:max-w-xl">
+                    <p id="topTickerText" class="text-slate-200 transition-all duration-500 font-medium">
+                        <i class="fa-solid fa-bullhorn text-brand-gold mr-1.5"></i>
+                        SAĞLIK-YAR-DER 2026 Sağlık Çalışanları Sosyal Yardım ve Hukuk Destek Başvuruları Başladı!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right Contacts & Action Links -->
+            <div class="hidden sm:flex items-center space-x-5 text-slate-300">
+                <a href="#iletisim" class="hover:text-brand-gold transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-phone text-brand-gold"></i>
+                    <span>7/24 Hat: 0850 308 2026</span>
+                </a>
+                <a href="mailto:destek@saglikyarder.org.tr" class="hover:text-brand-gold transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-envelope text-brand-gold"></i>
+                    <span>destek@saglikyarder.org.tr</span>
+                </a>
+                <div class="flex items-center space-x-2.5 pl-3 border-l border-slate-700">
+                    <a href="#" class="hover:text-brand-gold transition-colors" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-brand-gold transition-colors" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="hover:text-brand-gold transition-colors" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-brand-gold transition-colors" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MAIN NAVIGATION HEADER -->
+    <header class="sticky top-0 z-40 glass-header border-b border-slate-700/60 shadow-xl transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- BRAND LOGO (HIGH RES VECTOR SVG OF USER IMAGE) -->
+                <a href="#anasayfa" class="flex items-center space-x-3 group py-1">
+                    <!-- SVG RECREATION OF SAĞLIK-YAR-DER LOGO -->
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 relative flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
+                        <svg viewBox="0 0 400 400" class="w-full h-full filter drop-shadow-md" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Outer Double Navy & Red Rings -->
+                            <circle cx="200" cy="200" r="190" fill="#ffffff" stroke="#0B2545" stroke-width="9"/>
+                            <circle cx="200" cy="200" r="179" fill="none" stroke="#D62828" stroke-width="4"/>
+                            
+                            <!-- Top Crescent Moon & Star -->
+                            <g fill="#D62828" transform="translate(182, 16) scale(0.72)">
+                                <path d="M 25,0 A 20,20 0 1 0 25,40 A 15,15 0 1 1 25,0 Z"/>
+                                <polygon points="32,15 35,22 42,22 36,26 38,33 32,29 26,33 28,26 22,22 29,22"/>
+                            </g>
+                            
+                            <!-- Intertwined Heart Figures & Caduceus -->
+                            <g transform="translate(0, -10)">
+                                <!-- Red Human Left Heart Arc -->
+                                <path d="M 195 98 C 130 88 88 138 98 198 C 103 228 138 268 195 288 C 190 258 140 228 130 188 C 120 148 150 118 195 98 Z" fill="#D62828"/>
+                                <circle cx="128" cy="118" r="14" fill="#D62828"/>
+                                
+                                <!-- Navy Human Right Heart Arc -->
+                                <path d="M 205 98 C 270 88 312 138 302 198 C 297 228 262 268 205 288 C 210 258 260 228 270 188 C 280 148 250 118 205 98 Z" fill="#0B2545"/>
+                                <circle cx="272" cy="118" r="14" fill="#0B2545"/>
+                                
+                                <!-- Supporting Open Hands -->
+                                <path d="M 98 208 C 118 248 158 283 195 288 C 158 273 123 238 103 208 Z" fill="#0B2545"/>
+                                <path d="M 302 208 C 282 248 242 283 205 288 C 242 273 277 238 297 208 Z" fill="#D62828"/>
+                                
+                                <!-- Caduceus Rod & Wings -->
+                                <line x1="200" y1="92" x2="200" y2="282" stroke="#0B2545" stroke-width="7" stroke-linecap="round"/>
+                                <circle cx="200" cy="88" r="8" fill="#0B2545"/>
+                                <!-- Wings -->
+                                <path d="M 200 118 C 170 98 140 108 150 128 C 170 133 190 123 200 118 Z" fill="#0B2545"/>
+                                <path d="M 200 118 C 230 98 260 108 250 128 C 230 133 210 123 200 118 Z" fill="#0B2545"/>
+                                <!-- Twin Snakes -->
+                                <path d="M 200 138 Q 228 158 200 178 Q 172 198 200 218 Q 228 238 200 258" fill="none" stroke="#0B2545" stroke-width="4"/>
+                                <path d="M 200 138 Q 172 158 200 178 Q 228 198 200 218 Q 172 238 200 258" fill="none" stroke="#0B2545" stroke-width="4"/>
+                            </g>
+
+                            <!-- SAĞLIK-YAR-DER Main Text -->
+                            <text x="200" y="312" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="33" fill="#0B2545" text-anchor="middle" letter-spacing="1">SAĞLIK-YAR-DER</text>
+                            
+                            <!-- Gold EKG Line Accent -->
+                            <path d="M 85 325 L 142 325 L 152 315 L 162 335 L 175 302 L 190 342 L 205 318 L 215 327 L 225 325 L 315 325" fill="none" stroke="#C59B27" stroke-width="4" stroke-linecap="round"/>
+                            
+                            <!-- Subtitle Text -->
+                            <text x="200" y="344" font-family="'Inter', sans-serif" font-weight="800" font-size="12.5" fill="#0B2545" text-anchor="middle" letter-spacing="0.4">SAĞLIK ÇALIŞANLARI YARDIMLAŞMA</text>
+                            <text x="200" y="358" font-family="'Inter', sans-serif" font-weight="800" font-size="12.5" fill="#0B2545" text-anchor="middle" letter-spacing="0.4">VE DAYANIŞMA DERNEĞİ</text>
+                            
+                            <!-- Laurel Wreath & Year 2026 -->
+                            <path d="M 130 376 Q 160 386 200 386 Q 240 386 270 376" fill="none" stroke="#C59B27" stroke-width="3"/>
+                            <text x="200" y="383" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="15" fill="#C59B27" text-anchor="middle">— 2026 —</text>
+                        </svg>
+                    </div>
+
+                    <!-- Typography Title Header -->
+                    <div class="flex flex-col">
+                        <span class="text-xl sm:text-2xl font-black tracking-tight text-white flex items-center">
+                            SAĞLIK<span class="text-brand-red">-YAR-</span>DER
+                        </span>
+                        <span class="text-[10px] sm:text-xs text-brand-gold font-bold tracking-wide uppercase">
+                            Sağlık Çalışanları Yardımlaşma Derneği
+                        </span>
+                    </div>
+                </a>
+
+                <!-- DESKTOP NAVIGATION MENU -->
+                <nav class="hidden lg:flex items-center space-x-1 xl:space-x-2">
+                    <a href="#anasayfa" class="text-slate-200 hover:text-white hover:bg-white/10 px-3 py-2 rounded-lg text-sm font-semibold transition-all">Anasayfa</a>
+                    
+                    <!-- MEGA MENU: KURUMSAL -->
+                    <div class="relative group">
+                        <button class="text-slate-200 group-hover:text-white group-hover:bg-white/10 px-3 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-1.5">
+                            <span>Kurumsal</span>
+                            <i class="fa-solid fa-chevron-down text-xs text-brand-gold group-hover:rotate-180 transition-transform duration-300"></i>
+                        </button>
+
+                        <!-- Dropdown Panel -->
+                        <div class="absolute top-full left-0 w-[580px] bg-brand-navy border border-slate-700/90 rounded-2xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-1 p-5 grid grid-cols-2 gap-6 z-50">
+                            <!-- Col 1: Dernek Bilgileri -->
+                            <div>
+                                <div class="flex items-center gap-2 pb-2 mb-3 border-b border-slate-700 text-brand-gold font-bold text-xs uppercase tracking-wider">
+                                    <i class="fa-solid fa-building-shield"></i>
+                                    <span>SAĞLIK-YAR-DER</span>
+                                </div>
+                                <ul class="space-y-1.5 text-sm">
+                                    <li><a href="#hakkimizda" onclick="openTab('hakkimizda')" class="text-slate-300 hover:text-white hover:bg-white/5 p-2 rounded-lg block transition-colors"><i class="fa-solid fa-angle-right text-brand-red mr-2"></i>Hakkımızda</a></li>
+                                    <li><a href="#hakkimizda" onclick="openTab('tuzuk')" class="text-slate-300 hover:text-white hover:bg-white/5 p-2 rounded-lg block transition-colors"><i class="fa-solid fa-angle-right text-brand-red mr-2"></i>Dernek Tüzüğü</a></li>
+                                    <li><a href="#hakkimizda" onclick="openTab('yonetim')" class="text-slate-300 hover:text-white hover:bg-white/5 p-2 rounded-lg block transition-colors"><i class="fa-solid fa-angle-right text-brand-red mr-2"></i>Yönetim Kurulu</a></li>
+                                    <li><a href="#projeler" class="text-slate-300 hover:text-white hover:bg-white/5 p-2 rounded-lg block transition-colors"><i class="fa-solid fa-angle-right text-brand-red mr-2"></i>Projelerimiz</a></li>
+                                    <li><a href="#hakkimizda" onclick="openTab('ortaklar')" class="text-slate-300 hover:text-white hover:bg-white/5 p-2 rounded-lg block transition-colors"><i class="fa-solid fa-angle-right text-brand-red mr-2"></i>Çözüm Ortaklarımız</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Col 2: Basın & Medya -->
+                            <div>
+                                <div class="flex items-center gap-2 pb-2 mb-3 border-b border-slate-700 text-brand-gold font-bold text-xs uppercase tracking-wider">
+                                    <i class="fa-solid fa-newspaper"></i>
+                                    <span>Basın & Duyurular</span>
+                                </div>
+                                <ul class="space-y-1.5 text-sm">
+                                    <li><a href="#haberler" class="text-slate-300 hover:text-white hover:bg-white/5 p-2 rounded-lg block transition-colors"><i class="fa-solid fa-angle-right text-brand-red mr-2"></i>Güncel Haberler</a></li>
+                                    <li><a href="#haberler" class="text-slate-300 hover:text-white hover:bg-white/5 p-2 rounded-lg block transition-colors"><i class="fa-solid fa-angle-right text-brand-red mr-2"></i>Basın Bültenleri</a></li>
+                                    <li><a href="#haberler" class="text-slate-300 hover:text-white hover:bg-white/5 p-2 rounded-lg block transition-colors"><i class="fa-solid fa-angle-right text-brand-red mr-2"></i>Basında Biz</a></li>
+                                </ul>
+                                <div class="mt-4 p-3 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-slate-300">
+                                    <p class="font-bold text-brand-gold"><i class="fa-solid fa-shield-halved mr-1"></i> 2026 Dayanışma Yılı</p>
+                                    <p class="mt-1">Tüm sağlık çalışanlarımıza kesintisiz destek veriyoruz.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DROPDOWN: ŞUBELERİMİZ -->
+                    <div class="relative group">
+                        <button class="text-slate-200 group-hover:text-white group-hover:bg-white/10 px-3 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-1.5">
+                            <span>Şubelerimiz</span>
+                            <i class="fa-solid fa-chevron-down text-xs text-brand-gold group-hover:rotate-180 transition-transform duration-300"></i>
+                        </button>
+                        <div class="absolute top-full left-0 w-56 bg-brand-navy border border-slate-700/90 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-1 p-2 space-y-1 z-50">
+                            <a href="#subeler" onclick="filterRegion('all')" class="text-slate-300 hover:text-white hover:bg-white/10 p-2.5 rounded-lg block text-sm transition-colors"><i class="fa-solid fa-map-location-dot text-brand-gold mr-2"></i>Şubelerimiz</a>
+                            <a href="#subeler" onclick="filterRegion('marmara')" class="text-slate-300 hover:text-white hover:bg-white/10 p-2.5 rounded-lg block text-sm transition-colors"><i class="fa-solid fa-diagram-project text-brand-gold mr-2"></i>Bölge Temsilcilikleri</a>
+                            <a href="#subeler" onclick="filterRegion('icanadolu')" class="text-slate-300 hover:text-white hover:bg-white/10 p-2.5 rounded-lg block text-sm transition-colors"><i class="fa-solid fa-location-dot text-brand-gold mr-2"></i>İl Temsilcilikleri</a>
+                        </div>
+                    </div>
+
+                    <!-- DROPDOWN: MULTİMEDYA -->
+                    <div class="relative group">
+                        <button class="text-slate-200 group-hover:text-white group-hover:bg-white/10 px-3 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-1.5">
+                            <span>Multimedya</span>
+                            <i class="fa-solid fa-chevron-down text-xs text-brand-gold group-hover:rotate-180 transition-transform duration-300"></i>
+                        </button>
+                        <div class="absolute top-full left-0 w-52 bg-brand-navy border border-slate-700/90 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-1 p-2 space-y-1 z-50">
+                            <a href="#multimedya" onclick="switchMediaTab('videos')" class="text-slate-300 hover:text-white hover:bg-white/10 p-2.5 rounded-lg block text-sm transition-colors"><i class="fa-solid fa-circle-play text-brand-red mr-2"></i>Video Galeri</a>
+                            <a href="#multimedya" onclick="switchMediaTab('photos')" class="text-slate-300 hover:text-white hover:bg-white/10 p-2.5 rounded-lg block text-sm transition-colors"><i class="fa-solid fa-images text-brand-gold mr-2"></i>Fotoğraf Arşivi</a>
+                            <a href="#multimedya" onclick="openModal('videoModal')" class="text-slate-300 hover:text-white hover:bg-white/10 p-2.5 rounded-lg block text-sm transition-colors"><i class="fa-solid fa-film text-brand-gold mr-2"></i>Tanıtım Filmi</a>
+                        </div>
+                    </div>
+
+                    <a href="#projeler" class="text-slate-200 hover:text-white hover:bg-white/10 px-3 py-2 rounded-lg text-sm font-semibold transition-all">Projeler</a>
+                    <a href="#hizmetler" class="text-slate-200 hover:text-white hover:bg-white/10 px-3 py-2 rounded-lg text-sm font-semibold transition-all">Hizmetlerimiz</a>
+                    <a href="#iletisim" class="text-slate-200 hover:text-white hover:bg-white/10 px-3 py-2 rounded-lg text-sm font-semibold transition-all">İletişim</a>
+                </nav>
+
+                <!-- ACTION BUTTONS -->
+                <div class="hidden lg:flex items-center space-x-3">
+                    <button onclick="openModal('loginModal')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded-xl text-sm font-medium border border-slate-600/80 transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+                        <i class="fa-solid fa-right-to-bracket text-brand-gold"></i>
+                        <span>Üye Girişi</span>
+                    </button>
+                    <button onclick="openModal('registerModal')" class="bg-gradient-to-r from-brand-red to-rose-700 hover:from-rose-600 hover:to-brand-red text-white px-4 py-2 rounded-xl text-sm font-bold shadow-lg shadow-red-900/40 hover:shadow-red-800/60 transition-all flex items-center gap-2 transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-user-plus"></i>
+                        <span>Online Üyelik</span>
+                    </button>
+                </div>
+
+                <!-- MOBILE MENU BUTTON -->
+                <div class="lg:hidden flex items-center space-x-2">
+                    <button onclick="openModal('registerModal')" class="bg-brand-red text-white px-3 py-1.5 rounded-lg text-xs font-bold sm:hidden">
+                        Üye Ol
+                    </button>
+                    <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="text-slate-300 hover:text-white p-2 rounded-lg focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOBILE DRAWER MENU -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-brand-darkNavy border-t border-slate-800 px-4 py-6 space-y-4 max-h-[85vh] overflow-y-auto">
+            <a href="#anasayfa" onclick="toggleMobileMenu()" class="block text-slate-200 font-semibold py-2 border-b border-slate-800">Anasayfa</a>
+            
+            <div class="space-y-2 py-2 border-b border-slate-800">
+                <div class="text-brand-gold font-bold text-sm uppercase tracking-wider">Kurumsal</div>
+                <div class="pl-3 space-y-2 text-sm text-slate-300">
+                    <a href="#hakkimizda" onclick="toggleMobileMenu(); openTab('hakkimizda');" class="block py-1">Hakkımızda</a>
+                    <a href="#hakkimizda" onclick="toggleMobileMenu(); openTab('tuzuk');" class="block py-1">Tüzük</a>
+                    <a href="#hakkimizda" onclick="toggleMobileMenu(); openTab('yonetim');" class="block py-1">Yönetim Kurulu</a>
+                    <a href="#projeler" onclick="toggleMobileMenu()" class="block py-1">Projelerimiz</a>
+                    <a href="#hakkimizda" onclick="toggleMobileMenu(); openTab('ortaklar');" class="block py-1">Çözüm Ortaklarımız</a>
+                    <a href="#haberler" onclick="toggleMobileMenu()" class="block py-1">Haberler & Basın</a>
+                </div>
+            </div>
+
+            <div class="space-y-2 py-2 border-b border-slate-800">
+                <div class="text-brand-gold font-bold text-sm uppercase tracking-wider">Şubelerimiz</div>
+                <div class="pl-3 space-y-2 text-sm text-slate-300">
+                    <a href="#subeler" onclick="toggleMobileMenu()" class="block py-1">Tüm Şubeler</a>
+                    <a href="#subeler" onclick="toggleMobileMenu()" class="block py-1">Bölge Temsilcilikleri</a>
+                    <a href="#subeler" onclick="toggleMobileMenu()" class="block py-1">İl Temsilcilikleri</a>
+                </div>
+            </div>
+
+            <a href="#multimedya" onclick="toggleMobileMenu()" class="block text-slate-200 font-semibold py-2 border-b border-slate-800">Multimedya</a>
+            <a href="#projeler" onclick="toggleMobileMenu()" class="block text-slate-200 font-semibold py-2 border-b border-slate-800">Projeler</a>
+            <a href="#hizmetler" onclick="toggleMobileMenu()" class="block text-slate-200 font-semibold py-2 border-b border-slate-800">Hizmetlerimiz</a>
+            <a href="#iletisim" onclick="toggleMobileMenu()" class="block text-slate-200 font-semibold py-2 border-b border-slate-800">İletişim</a>
+
+            <div class="pt-4 flex flex-col gap-3">
+                <button onclick="toggleMobileMenu(); openModal('loginModal');" class="w-full bg-slate-800 text-white py-2.5 rounded-xl text-center font-medium border border-slate-700">
+                    Üye Girişi
+                </button>
+                <button onclick="toggleMobileMenu(); openModal('registerModal');" class="w-full bg-brand-red text-white py-2.5 rounded-xl text-center font-bold shadow-lg">
+                    Online Üyelik Başvurusu
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION WITH CANVAS BACKGROUND & LIVE EKG -->
+    <section id="anasayfa" class="relative min-h-[90vh] bg-brand-navy overflow-hidden flex items-center pt-8 pb-16">
+        <!-- Interactive Node/EKG Canvas Background -->
+        <canvas id="heroCanvas" class="absolute inset-0 w-full h-full opacity-30 pointer-events-none z-0"></canvas>
+        
+        <!-- Gradient Lighting Overlay Effects -->
+        <div class="absolute -top-40 -left-40 w-96 h-96 bg-brand-red/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-brand-gold/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Hero Content -->
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    
+                    <!-- Live Status Badge -->
+                    <div class="inline-flex items-center gap-3 bg-slate-800/90 backdrop-blur border border-brand-gold/40 px-4 py-2 rounded-full shadow-lg">
+                        <span class="relative flex h-2.5 w-2.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-gold opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-gold"></span>
+                        </span>
+                        <span class="text-xs font-bold tracking-widest text-brand-gold uppercase">SAĞLIK-YAR-DER 2026 VİZYONU</span>
+                    </div>
+
+                    <!-- Main Headline -->
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight">
+                        Sağlık Çalışanlarına <br>
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-brand-red to-amber-300 glow-text-red">
+                            Güven ve Güç Katıyoruz
+                        </span>
+                    </h1>
+
+                    <!-- Description -->
+                    <p class="text-slate-300 text-base sm:text-lg font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        Hekim, hemşire, ebe, paramedik, teknisyen ve tüm sağlık emekçilerimizin hukuki haklarını koruyor; sosyal dayanışma fonumuz ve 81 il teşkilatımızla her an yanlarında oluyoruz.
+                    </p>
+
+                    <!-- EKG Animated Line graphic -->
+                    <div class="w-full max-w-md mx-auto lg:mx-0 py-1">
+                        <svg class="w-full h-10 stroke-brand-gold" viewBox="0 0 500 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path class="ekg-path" d="M 0 50 L 120 50 L 140 20 L 160 80 L 180 10 L 200 90 L 220 40 L 240 60 L 260 50 L 500 50" stroke-width="4" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-1">
+                        <button onclick="openModal('registerModal')" class="w-full sm:w-auto bg-gradient-to-r from-brand-red to-rose-700 hover:from-rose-600 hover:to-brand-red text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-red-900/50 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-user-plus text-lg"></i>
+                            <span>Online Üyelik Başvurusu</span>
+                        </button>
+                        <button onclick="openModal('videoModal')" class="w-full sm:w-auto bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-600 font-semibold px-6 py-4 rounded-xl transition-all flex items-center justify-center gap-3 backdrop-blur group">
+                            <div class="w-8 h-8 rounded-full bg-brand-red/30 flex items-center justify-center text-brand-red group-hover:bg-brand-red group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-play text-xs ml-0.5"></i>
+                            </div>
+                            <span>Tanıtım Filmini İzle</span>
+                        </button>
+                    </div>
+
+                    <!-- Trust Indicators -->
+                    <div class="pt-6 border-t border-slate-800 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-400">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-shield-halved text-brand-gold"></i> 7/24 Hukuk Kalkanı</span>
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-hand-holding-heart text-brand-gold"></i> Sosyal Dayanışma Fonu</span>
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-graduation-cap text-brand-gold"></i> Sürekli Akademi</span>
+                    </div>
+
+                </div>
+
+                <!-- Right Hero Showcase Card -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        
+                        <!-- Main Card -->
+                        <div class="glass-card-dark rounded-3xl p-6 sm:p-8 shadow-2xl relative z-10 space-y-6">
+                            
+                            <!-- Card Header -->
+                            <div class="flex items-center justify-between pb-4 border-b border-slate-700">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-full bg-brand-red/20 flex items-center justify-center text-brand-red">
+                                        <i class="fa-solid fa-heart-pulse text-lg animate-pulse"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-white font-bold text-sm sm:text-base">SAĞLIK-YAR-DER Verileri</h3>
+                                        <p class="text-xs text-brand-gold">Canlı Dayanışma Göstergeleri</p>
+                                    </div>
+                                </div>
+                                <span class="bg-emerald-500/20 text-emerald-400 text-xs font-semibold px-2.5 py-1 rounded-full border border-emerald-500/30">
+                                    Aktif Ağ
+                                </span>
+                            </div>
+
+                            <!-- Live Counters Grid -->
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800 text-center">
+                                    <span class="block text-3xl font-extrabold text-white counter" data-target="81">0</span>
+                                    <span class="text-xs text-slate-400 mt-1 block">İl Temsilciliği</span>
+                                </div>
+                                <div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800 text-center">
+                                    <span class="block text-3xl font-extrabold text-brand-gold counter" data-target="52400">0</span>
+                                    <span class="text-xs text-slate-400 mt-1 block">Aktif Sağlık Üyesi</span>
+                                </div>
+                                <div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800 text-center">
+                                    <span class="block text-3xl font-extrabold text-brand-red counter" data-target="180">0</span>
+                                    <span class="text-xs text-slate-400 mt-1 block">Tamamlanan Proje</span>
+                                </div>
+                                <div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800 text-center">
+                                    <span class="block text-3xl font-extrabold text-emerald-400 counter" data-target="12500">0</span>
+                                    <span class="text-xs text-slate-400 mt-1 block">Hukuki Danışmanlık</span>
+                                </div>
+                            </div>
+
+                            <!-- Quick Action Support Card Footer -->
+                            <div class="bg-slate-800/90 rounded-xl p-4 border border-slate-700/70 flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <i class="fa-solid fa-headset text-2xl text-brand-gold"></i>
+                                    <div>
+                                        <p class="text-xs font-bold text-white">7/24 Acil Destek Hattı</p>
+                                        <p class="text-[11px] text-slate-300">Malpraktis & Nöbet Hakları</p>
+                                    </div>
+                                </div>
+                                <a href="tel:08503082026" class="bg-brand-gold hover:bg-amber-500 text-slate-950 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors">
+                                    Ara
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SON DUYURULAR AKICI TICHER BAR -->
+    <section class="bg-brand-darkNavy border-y border-slate-800 py-3.5 relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-3 min-w-max">
+                <span class="bg-brand-gold text-slate-950 font-black text-xs px-3 py-1 rounded-md uppercase tracking-wider flex items-center gap-1.5">
+                    <i class="fa-solid fa-bolt animate-bounce"></i> SON GELİŞMELER
+                </span>
+            </div>
+            <div class="overflow-hidden w-full text-xs sm:text-sm text-slate-300">
+                <div id="newsTickerText" class="transition-all duration-500 font-medium">
+                    • 2026 Beyaz Önlük Hukuk Kalkanı ile Tüm Üyelerimize Ücretsiz Malpraktis Avukatlık Desteği Başladı.
+                </div>
+            </div>
+            <div class="hidden sm:flex items-center space-x-2 min-w-max">
+                <button onclick="prevNewsTicker()" class="w-7 h-7 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-chevron-left text-xs"></i>
+                </button>
+                <button onclick="nextNewsTicker()" class="w-7 h-7 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- KURUMSAL SECTION (TABLI HAKKIMIZDA, TÜZÜK, YÖNETİM, ORTAKLAR) -->
+    <section id="hakkimizda" class="py-20 bg-slate-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Title -->
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brand-red font-bold text-xs uppercase tracking-widest bg-red-100 px-3 py-1 rounded-full">KURUMSAL KİMLİK</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy mt-3">SAĞLIK-YAR-DER Hakkında</h2>
+                <p class="text-slate-600 mt-2 text-sm sm:text-base">Sağlık çalışanlarımızın mesleki onurunu, hukuki güvencesini ve sosyal refahını yükseltmek için 2026 vizyonuyla yola çıktık.</p>
+            </div>
+
+            <!-- Tab Navigation Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-10 border-b border-slate-200 pb-4">
+                <button onclick="openTab('hakkimizda')" id="tab-btn-hakkimizda" class="tab-btn active px-6 py-3 rounded-xl font-bold text-sm transition-all bg-brand-navy text-white shadow-lg">
+                    <i class="fa-solid fa-circle-info mr-2"></i>Hakkımızda & Vizyon
+                </button>
+                <button onclick="openTab('tuzuk')" id="tab-btn-tuzuk" class="tab-btn px-6 py-3 rounded-xl font-bold text-sm transition-all bg-white text-slate-700 hover:bg-slate-100">
+                    <i class="fa-solid fa-book-bookmark mr-2"></i>Dernek Tüzüğü
+                </button>
+                <button onclick="openTab('yonetim')" id="tab-btn-yonetim" class="tab-btn px-6 py-3 rounded-xl font-bold text-sm transition-all bg-white text-slate-700 hover:bg-slate-100">
+                    <i class="fa-solid fa-users-gear mr-2"></i>Yönetim Kurulu
+                </button>
+                <button onclick="openTab('ortaklar')" id="tab-btn-ortaklar" class="tab-btn px-6 py-3 rounded-xl font-bold text-sm transition-all bg-white text-slate-700 hover:bg-slate-100">
+                    <i class="fa-solid fa-handshake mr-2"></i>Çözüm Ortaklarımız
+                </button>
+            </div>
+
+            <!-- TAB CONTENT 1: HAKKIMIZDA -->
+            <div id="tab-content-hakkimizda" class="tab-content block">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6">
+                        <h3 class="text-2xl font-extrabold text-brand-navy">Sağlık Birlikteliği ile Yarınlara Omuz Omuza</h3>
+                        <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                            SAĞLIK-YAR-DER (Sağlık Çalışanları Yardımlaşma ve Dayanışma Derneği), 2026 yılı itibarıyla Türkiye genelindeki kamu ve özel sağlık kurumlarında görev yapan tüm sağlık çalışanlarının haklarını savunmak, zorlu çalışma koşullarında sosyal yardım mekanizmaları oluşturmak amacıyla hayata geçirilmiştir.
+                        </p>
+                        <div class="space-y-3">
+                            <div class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-brand-red/10 text-brand-red flex items-center justify-center mt-1 flex-shrink-0"><i class="fa-solid fa-check text-xs"></i></div>
+                                <p class="text-sm text-slate-700 font-semibold">Tüm Sağlık Branşlarına Kesintisiz Hukuki Koruma</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-brand-red/10 text-brand-red flex items-center justify-center mt-1 flex-shrink-0"><i class="fa-solid fa-check text-xs"></i></div>
+                                <p class="text-sm text-slate-700 font-semibold">Afet ve Acil Durum Sağlıkçı Dayanışma Fonu</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-brand-red/10 text-brand-red flex items-center justify-center mt-1 flex-shrink-0"><i class="fa-solid fa-check text-xs"></i></div>
+                                <p class="text-sm text-slate-700 font-semibold">Sağlık Çalışanı Çocuklarına Eğitim Bursu</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-brand-navy to-slate-900 rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-brand-gold/10 rounded-full blur-2xl"></div>
+                            <h4 class="text-xl font-bold text-brand-gold mb-4">2026 Stratejik Dayanışma Vizyonu</h4>
+                            <ul class="space-y-4 text-sm text-slate-300">
+                                <li class="pb-3 border-b border-slate-800 flex items-center justify-between">
+                                    <span>81 İl Temsilciliği Kurulumu</span>
+                                    <span class="text-emerald-400 font-bold">Tamamlandı</span>
+                                </li>
+                                <li class="pb-3 border-b border-slate-800 flex items-center justify-between">
+                                    <span>7/24 Dijital Hukuk Paneli</span>
+                                    <span class="text-emerald-400 font-bold">Aktif</span>
+                                </li>
+                                <li class="pb-3 border-b border-slate-800 flex items-center justify-between">
+                                    <span>Sağlıkçı Misafirhane ve Sosyal Tesis Ağı</span>
+                                    <span class="text-brand-gold font-bold">2026 Q3</span>
+                                </li>
+                                <li class="flex items-center justify-between">
+                                    <span>Uluslararası Tıp Kongresi Katılım Fonu</span>
+                                    <span class="text-emerald-400 font-bold">Aktif</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB CONTENT 2: TÜZÜK -->
+            <div id="tab-content-tuzuk" class="tab-content hidden">
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-lg space-y-6">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 border-b border-slate-200 gap-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-brand-navy">SAĞLIK-YAR-DER Resmi Dernek Tüzüğü</h3>
+                            <p class="text-xs text-slate-500">2026 Yılı Genel Kurulunda Kabul Edilen Tüzük Metni</p>
+                        </div>
+                        <button onclick="openModal('tuzukModal')" class="bg-brand-navy text-white text-xs px-4 py-2.5 rounded-xl font-bold hover:bg-slate-800 transition-colors flex items-center gap-2">
+                            <i class="fa-solid fa-file-pdf text-brand-gold"></i> Tüzük Belgesini İncele
+                        </button>
+                    </div>
+                    <div class="text-sm text-slate-600 space-y-4 leading-relaxed max-h-96 overflow-y-auto pr-4">
+                        <p><strong>MADDE 1 – DERNEĞİN ADI VE MERKEZİ:</strong> Derneğin adı "Sağlık Çalışanları Yardımlaşma ve Dayanışma Derneği" olup kısa adı "SAĞLIK-YAR-DER"dir. Derneğin Genel Merkezi Ankara'dadır.</p>
+                        <p><strong>MADDE 2 – DERNEĞİN AMACI:</strong> Türkiye Cumhuriyeti genelinde sağlık sektöründe görev yapan doktor, hemşire, ebe, teknisyen, paramedik ve tüm sağlık çalışanlarının özlük haklarını, mesleki saygınlığını ve sosyal refahını korumak, üyeler arası yardımlaşma ve dayanışmayı sağlamaktır.</p>
+                        <p><strong>MADDE 3 – ÜYELİK ŞARTLARI:</strong> Medeni hakları kullanma ehliyetine sahip olan, sağlık alanında kamu veya özel sektörde çalışan ya da emekli olmuş her birey SAĞLIK-YAR-DER'e üye olabilir.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB CONTENT 3: YÖNETİM KURULU -->
+            <div id="tab-content-yonetim" class="tab-content hidden">
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Member 1 -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-md text-center hover:shadow-xl transition-all">
+                        <div class="w-24 h-24 rounded-full bg-brand-navy text-white mx-auto flex items-center justify-center text-3xl font-extrabold mb-4 border-4 border-brand-gold">
+                            YK
+                        </div>
+                        <h4 class="font-bold text-lg text-brand-navy">Dr. Selim Karahan</h4>
+                        <p class="text-xs text-brand-red font-bold mb-2">Genel Başkan</p>
+                        <p class="text-xs text-slate-500">Acil Tıp Uzmanı</p>
+                    </div>
+
+                    <!-- Member 2 -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-md text-center hover:shadow-xl transition-all">
+                        <div class="w-24 h-24 rounded-full bg-brand-navy text-white mx-auto flex items-center justify-center text-3xl font-extrabold mb-4 border-4 border-brand-gold">
+                            YK
+                        </div>
+                        <h4 class="font-bold text-lg text-brand-navy">Hem. Elif Yılmaz</h4>
+                        <p class="text-xs text-brand-red font-bold mb-2">Genel Başkan Yardımcısı</p>
+                        <p class="text-xs text-slate-500">Yoğun Bakım Sorumlu Hemşiresi</p>
+                    </div>
+
+                    <!-- Member 3 -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-md text-center hover:shadow-xl transition-all">
+                        <div class="w-24 h-24 rounded-full bg-brand-navy text-white mx-auto flex items-center justify-center text-3xl font-extrabold mb-4 border-4 border-brand-gold">
+                            YK
+                        </div>
+                        <h4 class="font-bold text-lg text-brand-navy">Av. Kerem Aksoy</h4>
+                        <p class="text-xs text-brand-red font-bold mb-2">Hukuk Kurulu Başkanı</p>
+                        <p class="text-xs text-slate-500">Sağlık Hukuku Uzmanı Avukat</p>
+                    </div>
+
+                    <!-- Member 4 -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-md text-center hover:shadow-xl transition-all">
+                        <div class="w-24 h-24 rounded-full bg-brand-navy text-white mx-auto flex items-center justify-center text-3xl font-extrabold mb-4 border-4 border-brand-gold">
+                            YK
+                        </div>
+                        <h4 class="font-bold text-lg text-brand-navy">Tekn. Burak Şahin</h4>
+                        <p class="text-xs text-brand-red font-bold mb-2">Genel Sekreter</p>
+                        <p class="text-xs text-slate-500">Anestezi Teknisyeni</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB CONTENT 4: ÇÖZÜM ORTAKLARI -->
+            <div id="tab-content-ortaklar" class="tab-content hidden">
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-lg text-center">
+                    <h3 class="text-xl font-bold text-brand-navy mb-6">SAĞLIK-YAR-DER Stratejik Çözüm Ortakları</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 items-center">
+                        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 font-bold text-slate-700">Türkiye Hukukçular Birliği</div>
+                        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 font-bold text-slate-700">Medikal Akademi Vakfı</div>
+                        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 font-bold text-slate-700">Ulusal Sağlık Ağı</div>
+                        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 font-bold text-slate-700">Sosyal Dayanışma Platformu</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- HİZMETLERİMİZ SECTION -->
+    <section id="hizmetler" class="py-20 bg-slate-900 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-gold font-bold text-xs uppercase tracking-widest bg-brand-gold/10 px-3 py-1 rounded-full border border-brand-gold/20">ÜYE DESTEK HİZMETLERİ</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3">Her Anınızda Yanınızdayız</h2>
+                <p class="text-slate-400 mt-2 text-sm sm:text-base">Nöbetten hukuki süreçlere, eğitimden sosyal tesislere kadar kapsayıcı hizmet ağımız.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Service 1 -->
+                <div class="bg-slate-800/90 rounded-2xl p-8 border border-slate-700 hover:border-brand-gold transition-all hover:-translate-y-2 group shadow-xl">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-red/20 text-brand-red flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-gavel"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">7/24 Hukuk Kalkanı & Malpraktis</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Tıbbi uygulama iddialarında ve özlük haklarınızın savunulmasında uzman hukuk ekibimizle tamamen ücretsiz avukatlık ve danışmanlık hizmeti.
+                    </p>
+                    <button onclick="openModal('serviceModal1')" class="text-brand-gold font-bold text-xs flex items-center gap-2 group-hover:underline">
+                        Detaylı İncele <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-slate-800/90 rounded-2xl p-8 border border-slate-700 hover:border-brand-gold transition-all hover:-translate-y-2 group shadow-xl">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-gold/20 text-brand-gold flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-gold group-hover:text-slate-950 transition-colors">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Sürekli Sağlık Akademisi 2026</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Sağlık çalışanlarımızın mesleki gelişimine özel uluslararası sertifikalı online seminerler ve akademik yayın destek programı.
+                    </p>
+                    <button onclick="openModal('serviceModal2')" class="text-brand-gold font-bold text-xs flex items-center gap-2 group-hover:underline">
+                        Detaylı İncele <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-slate-800/90 rounded-2xl p-8 border border-slate-700 hover:border-brand-gold transition-all hover:-translate-y-2 group shadow-xl">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-emerald-500 group-hover:text-slate-950 transition-colors">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Acil Sosyal Yardım Fonu</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Afet, ağır hastalık veya mesleki kaza durumlarında üyelerimize ve ailelerine doğrudan nakdi yardım imkanı.
+                    </p>
+                    <button onclick="openModal('serviceModal3')" class="text-brand-gold font-bold text-xs flex items-center gap-2 group-hover:underline">
+                        Detaylı İncele <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-slate-800/90 rounded-2xl p-8 border border-slate-700 hover:border-brand-gold transition-all hover:-translate-y-2 group shadow-xl">
+                    <div class="w-14 h-14 rounded-2xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-rose-500 group-hover:text-slate-950 transition-colors">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Nöbet Sonrası Psikososyal Destek</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Yoğun çalışma koşulları ve tükenmişlikle mücadelede uzman psikologlarımızla 7/24 gizli ve ücretsiz görüşme hakkı.
+                    </p>
+                    <button onclick="openModal('serviceModal4')" class="text-brand-gold font-bold text-xs flex items-center gap-2 group-hover:underline">
+                        Detaylı İncele <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="bg-slate-800/90 rounded-2xl p-8 border border-slate-700 hover:border-brand-gold transition-all hover:-translate-y-2 group shadow-xl">
+                    <div class="w-14 h-14 rounded-2xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-cyan-500 group-hover:text-slate-950 transition-colors">
+                        <i class="fa-solid fa-hotel"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Konaklama & Sosyal Tesis Ağı</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Türkiye genelinde anlaşmalı otel, misafirhane ve tatil tesislerinde SAĞLIK-YAR-DER üyelerine özel %40'a varan indirimler.
+                    </p>
+                    <button onclick="openModal('serviceModal5')" class="text-brand-gold font-bold text-xs flex items-center gap-2 group-hover:underline">
+                        Detaylı İncele <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="bg-slate-800/90 rounded-2xl p-8 border border-slate-700 hover:border-brand-gold transition-all hover:-translate-y-2 group shadow-xl">
+                    <div class="w-14 h-14 rounded-2xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-purple-500 group-hover:text-slate-950 transition-colors">
+                        <i class="fa-solid fa-child-reaching"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Sağlıkçı Çocukları Eğitim Bursu</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Görevi başında hayatını kaybeden veya gazi olan sağlık çalışanlarımızın çocuklarına ilkokuldan üniversiteye kesintisiz eğitim bursu.
+                    </p>
+                    <button onclick="openModal('serviceModal6')" class="text-brand-gold font-bold text-xs flex items-center gap-2 group-hover:underline">
+                        Detaylı İncele <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJELERİMİZ SECTION -->
+    <section id="projeler" class="py-20 bg-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brand-red font-bold text-xs uppercase tracking-widest bg-red-100 px-3 py-1 rounded-full">GELECEĞE YÖN VEREN PROJELER</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy mt-3">2026 Dernek Projelerimiz</h2>
+                <p class="text-slate-600 mt-2 text-sm sm:text-base">Sağlık sektöründe somut çözümler üreten yenilikçi projelerimiz.</p>
+            </div>
+
+            <!-- Project Cards Grid -->
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Project 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-2xl transition-all">
+                    <div class="h-48 bg-gradient-to-r from-brand-navy to-slate-900 p-6 flex flex-col justify-between text-white relative">
+                        <span class="bg-emerald-500 text-xs font-bold px-3 py-1 rounded-full w-max">Devam Ediyor</span>
+                        <div>
+                            <span class="text-brand-gold text-xs font-semibold block uppercase">HUKUKİ GÜVENCE</span>
+                            <h3 class="text-xl font-bold">Beyaz Önlük Hukuk Kalkanı</h3>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <p class="text-xs text-slate-600 leading-relaxed">Malpraktis davaları ve sağlıkta şiddet vakalarında sağlık çalışanlarına anında yerinde hukuki müdahale projesi.</p>
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1">
+                                <span>Kapsanan Şehir Sayısı</span>
+                                <span class="text-brand-red">81 / 81 İl</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-2">
+                                <div class="bg-brand-red h-2 rounded-full" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-2xl transition-all">
+                    <div class="h-48 bg-gradient-to-r from-red-900 to-brand-navy p-6 flex flex-col justify-between text-white relative">
+                        <span class="bg-brand-gold text-slate-950 text-xs font-bold px-3 py-1 rounded-full w-max">2026 Aktif</span>
+                        <div>
+                            <span class="text-brand-gold text-xs font-semibold block uppercase">AFET KOORDİNASYONU</span>
+                            <h3 class="text-xl font-bold">Afet Gönüllü Sağlık Ağı</h3>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <p class="text-xs text-slate-600 leading-relaxed">Deprem ve afet anında 15 dakika içinde mobilize olabilen 5.000 kişilik eğitimli yedek medikal tim projesi.</p>
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1">
+                                <span>Kayıtlı Gönüllü</span>
+                                <span class="text-brand-navy">4,850 Sağlıkçı</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-2">
+                                <div class="bg-brand-navy h-2 rounded-full" style="width: 92%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-2xl transition-all">
+                    <div class="h-48 bg-gradient-to-r from-slate-900 to-rose-950 p-6 flex flex-col justify-between text-white relative">
+                        <span class="bg-emerald-500 text-xs font-bold px-3 py-1 rounded-full w-max">2026 Tamamlandı</span>
+                        <div>
+                            <span class="text-brand-gold text-xs font-semibold block uppercase">DİJİTAL DÖNÜŞÜM</span>
+                            <h3 class="text-xl font-bold">Sağlıkta Yapay Zeka Akademi</h3>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <p class="text-xs text-slate-600 leading-relaxed">Tıp ve hemşirelikte dijital teknolojiler ve yapay zeka entegrasyonu üzerine akredite eğitim programı.</p>
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1">
+                                <span>Sertifikalı Üye</span>
+                                <span class="text-emerald-600">8,200+ Mezun</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-2">
+                                <div class="bg-emerald-500 h-2 rounded-full" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ŞUBELERİMİZ VE TÜRKİYE AĞI -->
+    <section id="subeler" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-brand-gold font-bold text-xs uppercase tracking-widest bg-amber-50 px-3 py-1 rounded-full border border-amber-200">TÜRKİYE TEŞKİLAT AĞI</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy mt-3">Şubelerimiz & İl Temsilcilikleri</h2>
+                </div>
+                <!-- Search Input -->
+                <div class="mt-4 md:mt-0 relative w-full md:w-80">
+                    <input type="text" id="branchSearch" onkeyup="searchBranches()" placeholder="Şehir veya şube adı ara..." class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-brand-navy text-sm shadow-sm">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400"></i>
+                </div>
+            </div>
+
+            <!-- Region Filter Pills -->
+            <div class="flex flex-wrap gap-2 mb-8 border-b border-slate-200 pb-4">
+                <button onclick="filterRegion('all')" class="region-btn bg-brand-navy text-white px-4 py-2 rounded-xl text-xs font-bold shadow transition-all">Tüm Bölgeler</button>
+                <button onclick="filterRegion('icanadolu')" class="region-btn bg-slate-100 text-slate-700 hover:bg-slate-200 px-4 py-2 rounded-xl text-xs font-bold transition-all">İç Anadolu</button>
+                <button onclick="filterRegion('marmara')" class="region-btn bg-slate-100 text-slate-700 hover:bg-slate-200 px-4 py-2 rounded-xl text-xs font-bold transition-all">Marmara</button>
+                <button onclick="filterRegion('ege')" class="region-btn bg-slate-100 text-slate-700 hover:bg-slate-200 px-4 py-2 rounded-xl text-xs font-bold transition-all">Ege</button>
+                <button onclick="filterRegion('akdeniz')" class="region-btn bg-slate-100 text-slate-700 hover:bg-slate-200 px-4 py-2 rounded-xl text-xs font-bold transition-all">Akdeniz</button>
+                <button onclick="filterRegion('guneydogu')" class="region-btn bg-slate-100 text-slate-700 hover:bg-slate-200 px-4 py-2 rounded-xl text-xs font-bold transition-all">Güneydoğu Anadolu</button>
+            </div>
+
+            <!-- Branches Cards Grid -->
+            <div id="branchesContainer" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Branch Card 1 -->
+                <div class="branch-item icanadolu bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:border-brand-navy transition-all shadow-sm hover:shadow-md">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="bg-brand-navy text-white text-[10px] font-bold px-2.5 py-0.5 rounded uppercase">İç Anadolu</span>
+                        <span class="text-xs text-emerald-600 font-bold flex items-center gap-1"><i class="fa-solid fa-circle text-[8px]"></i> Genel Merkez</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-navy">Ankara Genel Merkez</h3>
+                    <p class="text-xs text-slate-500 mt-1"><i class="fa-solid fa-user-tie text-brand-gold mr-1.5"></i>Temsilci: Dr. Selim Karahan</p>
+                    <p class="text-xs text-slate-600 mt-3 flex items-start gap-2"><i class="fa-solid fa-location-dot text-brand-red mt-0.5"></i> GMK Bulvarı No: 45 Çankaya / Ankara</p>
+                    <div class="mt-4 pt-3 border-t border-slate-200 flex justify-between text-xs">
+                        <a href="tel:03123082026" class="text-brand-navy font-bold hover:underline"><i class="fa-solid fa-phone mr-1"></i> 0312 308 2026</a>
+                        <a href="mailto:ankara@saglikyarder.org.tr" class="text-slate-500 hover:text-brand-red"><i class="fa-solid fa-envelope"></i> E-Posta</a>
+                    </div>
+                </div>
+
+                <!-- Branch Card 2 -->
+                <div class="branch-item marmara bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:border-brand-navy transition-all shadow-sm hover:shadow-md">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="bg-brand-navy text-white text-[10px] font-bold px-2.5 py-0.5 rounded uppercase">Marmara Bölgesi</span>
+                        <span class="text-xs text-slate-500 font-bold">İl Şubesi</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-navy">İstanbul İl Başkanlığı</h3>
+                    <p class="text-xs text-slate-500 mt-1"><i class="fa-solid fa-user-tie text-brand-gold mr-1.5"></i>Temsilci: Uzm. Dr. Volkan Kaya</p>
+                    <p class="text-xs text-slate-600 mt-3 flex items-start gap-2"><i class="fa-solid fa-location-dot text-brand-red mt-0.5"></i> Halaskargazi Cad. No: 112 Şişli / İstanbul</p>
+                    <div class="mt-4 pt-3 border-t border-slate-200 flex justify-between text-xs">
+                        <a href="tel:02123082026" class="text-brand-navy font-bold hover:underline"><i class="fa-solid fa-phone mr-1"></i> 0212 308 2026</a>
+                        <a href="mailto:istanbul@saglikyarder.org.tr" class="text-slate-500 hover:text-brand-red"><i class="fa-solid fa-envelope"></i> E-Posta</a>
+                    </div>
+                </div>
+
+                <!-- Branch Card 3 -->
+                <div class="branch-item ege bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:border-brand-navy transition-all shadow-sm hover:shadow-md">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="bg-brand-navy text-white text-[10px] font-bold px-2.5 py-0.5 rounded uppercase">Ege Bölgesi</span>
+                        <span class="text-xs text-slate-500 font-bold">İl Şubesi</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-navy">İzmir İl Başkanlığı</h3>
+                    <p class="text-xs text-slate-500 mt-1"><i class="fa-solid fa-user-tie text-brand-gold mr-1.5"></i>Temsilci: Hem. Duygu Arslan</p>
+                    <p class="text-xs text-slate-600 mt-3 flex items-start gap-2"><i class="fa-solid fa-location-dot text-brand-red mt-0.5"></i> Atatürk Cad. No: 74 Konak / İzmir</p>
+                    <div class="mt-4 pt-3 border-t border-slate-200 flex justify-between text-xs">
+                        <a href="tel:02323082026" class="text-brand-navy font-bold hover:underline"><i class="fa-solid fa-phone mr-1"></i> 0232 308 2026</a>
+                        <a href="mailto:izmir@saglikyarder.org.tr" class="text-slate-500 hover:text-brand-red"><i class="fa-solid fa-envelope"></i> E-Posta</a>
+                    </div>
+                </div>
+
+                <!-- Branch Card 4 -->
+                <div class="branch-item guneydogu bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:border-brand-navy transition-all shadow-sm hover:shadow-md">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="bg-brand-navy text-white text-[10px] font-bold px-2.5 py-0.5 rounded uppercase">Güneydoğu Anadolu</span>
+                        <span class="text-xs text-slate-500 font-bold">Bölge Temsilciliği</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-navy">Gaziantep & Bölge Temsilciliği</h3>
+                    <p class="text-xs text-slate-500 mt-1"><i class="fa-solid fa-user-tie text-brand-gold mr-1.5"></i>Temsilci: Paramedik Ömer Faruk</p>
+                    <p class="text-xs text-slate-600 mt-3 flex items-start gap-2"><i class="fa-solid fa-location-dot text-brand-red mt-0.5"></i> Muammer Aksoy Bulvarı No: 34 Şehitkamil / Gaziantep</p>
+                    <div class="mt-4 pt-3 border-t border-slate-200 flex justify-between text-xs">
+                        <a href="tel:03423082026" class="text-brand-navy font-bold hover:underline"><i class="fa-solid fa-phone mr-1"></i> 0342 308 2026</a>
+                        <a href="mailto:gaziantep@saglikyarder.org.tr" class="text-slate-500 hover:text-brand-red"><i class="fa-solid fa-envelope"></i> E-Posta</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MULTİMEDYA & MERKEZİ GALERİ -->
+    <section id="multimedya" class="py-20 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brand-gold font-bold text-xs uppercase tracking-widest bg-brand-gold/10 px-3 py-1 rounded-full border border-brand-gold/20">DİJİTAL MEDYA KÜTÜPHANESİ</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3">Multimedya Galerimiz</h2>
+                <p class="text-slate-400 mt-2 text-sm sm:text-base">Etkinliklerimizin özet videoları, fotoğraf galerimiz ve dijital bültenlerimiz.</p>
+            </div>
+
+            <!-- Media Category Tabs -->
+            <div class="flex justify-center gap-4 mb-10">
+                <button onclick="switchMediaTab('videos')" id="media-tab-videos" class="media-tab-btn active bg-brand-red text-white px-6 py-2.5 rounded-xl text-xs font-bold transition-all shadow-lg">
+                    <i class="fa-solid fa-circle-play mr-2"></i>Video Galerisi
+                </button>
+                <button onclick="switchMediaTab('photos')" id="media-tab-photos" class="media-tab-btn bg-slate-800 text-slate-300 hover:bg-slate-700 px-6 py-2.5 rounded-xl text-xs font-bold transition-all">
+                    <i class="fa-solid fa-images mr-2"></i>Fotoğraf Arşivi
+                </button>
+            </div>
+
+            <!-- Media Gallery Content: Videos -->
+            <div id="media-content-videos" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Video Item 1 -->
+                <div onclick="openModal('videoModal')" class="group cursor-pointer bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-brand-red transition-all shadow-lg">
+                    <div class="relative h-48 bg-slate-950 flex items-center justify-center">
+                        <div class="w-14 h-14 rounded-full bg-brand-red text-white flex items-center justify-center text-xl shadow-lg group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-play ml-1"></i>
+                        </div>
+                        <span class="absolute bottom-3 right-3 bg-slate-900/80 text-white text-[10px] px-2 py-0.5 rounded">04:15</span>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-base text-white group-hover:text-brand-gold transition-colors">2026 SAĞLIK-YAR-DER Kuruluş Vizyonu</h4>
+                        <p class="text-xs text-slate-400 mt-2">Sağlık Çalışanları Dayanışması ve Hukuk Destek Ağı</p>
+                    </div>
+                </div>
+
+                <!-- Video Item 2 -->
+                <div onclick="openModal('videoModal')" class="group cursor-pointer bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-brand-red transition-all shadow-lg">
+                    <div class="relative h-48 bg-slate-950 flex items-center justify-center">
+                        <div class="w-14 h-14 rounded-full bg-brand-red text-white flex items-center justify-center text-xl shadow-lg group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-play ml-1"></i>
+                        </div>
+                        <span class="absolute bottom-3 right-3 bg-slate-900/80 text-white text-[10px] px-2 py-0.5 rounded">06:40</span>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-base text-white group-hover:text-brand-gold transition-colors">Malpraktis ve Hukuki Haklarımız</h4>
+                        <p class="text-xs text-slate-400 mt-2">Hukuk Kurulu Avukatlarımızla Canlı Seminer Kaydı</p>
+                    </div>
+                </div>
+
+                <!-- Video Item 3 -->
+                <div onclick="openModal('videoModal')" class="group cursor-pointer bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-brand-red transition-all shadow-lg">
+                    <div class="relative h-48 bg-slate-950 flex items-center justify-center">
+                        <div class="w-14 h-14 rounded-full bg-brand-red text-white flex items-center justify-center text-xl shadow-lg group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-play ml-1"></i>
+                        </div>
+                        <span class="absolute bottom-3 right-3 bg-slate-900/80 text-white text-[10px] px-2 py-0.5 rounded">03:10</span>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-base text-white group-hover:text-brand-gold transition-colors">Sosyal Yardım Fonu Saha Faaliyetleri</h4>
+                        <p class="text-xs text-slate-400 mt-2">Sağlıkçı Ailelerimize Ziyaret ve Destek Özetleri</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Media Gallery Content: Photos (Hidden by Default) -->
+            <div id="media-content-photos" class="hidden grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="h-56 bg-slate-800 rounded-2xl border border-slate-700 p-5 flex flex-col justify-end text-white">
+                    <span class="text-xs text-brand-gold font-bold">ANKARA / 2026</span>
+                    <p class="font-bold">1. Olağan Genel Kurul Töreni</p>
+                </div>
+                <div class="h-56 bg-slate-800 rounded-2xl border border-slate-700 p-5 flex flex-col justify-end text-white">
+                    <span class="text-xs text-brand-gold font-bold">İSTANBUL / 2026</span>
+                    <p class="font-bold">Sağlıkta Şiddeti Önleme Çalıştayı</p>
+                </div>
+                <div class="h-56 bg-slate-800 rounded-2xl border border-slate-700 p-5 flex flex-col justify-end text-white">
+                    <span class="text-xs text-brand-gold font-bold">İZMİR / 2026</span>
+                    <p class="font-bold">Genç Sağlıkçılar Akademisi Sertifika Gecesi</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- İLETİŞİM & MESAJ FORMU -->
+    <section id="iletisim" class="py-20 bg-slate-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12">
+                
+                <!-- Contact Info -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div>
+                        <span class="text-brand-red font-bold text-xs uppercase tracking-widest bg-red-100 px-3 py-1 rounded-full">BİZE ULAŞIN</span>
+                        <h2 class="text-3xl font-extrabold text-brand-navy mt-3">İletişim & Destek</h2>
+                        <p class="text-slate-600 text-sm mt-2">Dernek üyeliği, hukuki danışmanlık ve sosyal yardım talepleriniz için 7/24 hizmetinizdeyiz.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand-navy text-brand-gold flex items-center justify-center text-xl flex-shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-navy text-sm">Genel Merkez Adresi</h4>
+                                <p class="text-xs text-slate-600 mt-1">Gazi Mustafa Kemal Bulvarı No: 45, Kızılay / Çankaya / Ankara</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand-navy text-brand-gold flex items-center justify-center text-xl flex-shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-navy text-sm">7/24 Destek & Çağrı Merkezi</h4>
+                                <p class="text-xs text-slate-600 mt-1">0850 308 2026 / 0312 308 2026</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand-navy text-brand-gold flex items-center justify-center text-xl flex-shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-navy text-sm">E-Posta İletişim</h4>
+                                <p class="text-xs text-slate-600 mt-1">destek@saglikyarder.org.tr</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="lg:col-span-7">
+                    <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-xl">
+                        <h3 class="text-xl font-bold text-brand-navy mb-2">İletişim & Talep Formu</h3>
+                        <p class="text-xs text-slate-500 mb-6">Aşağıdaki formu doldurarak temsilcilerimizin sizinle anında iletişime geçmesini sağlayabilirsiniz.</p>
+
+                        <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">Adınız Soyadınız *</label>
+                                    <input type="text" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-brand-navy text-sm" placeholder="Örn: Dr. Ahmet Yılmaz">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">E-Posta Adresiniz *</label>
+                                    <input type="email" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-brand-navy text-sm" placeholder="ahmet@example.com">
+                                </div>
+                            </div>
+
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">Telefon Numarası *</label>
+                                    <input type="tel" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-brand-navy text-sm" placeholder="05XX XXX XX XX">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">Mesleki Unvan *</label>
+                                    <select class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-brand-navy text-sm">
+                                        <option>Hekim / Uzman Hekim</option>
+                                        <option>Hemşire / Ebe</option>
+                                        <option>Paramedik / ATT</option>
+                                        <option>Sağlık Teknisyeni / Teknikeri</option>
+                                        <option>Diğer Sağlık Çalışanı</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Mesajınız / Talep Konusu *</label>
+                                <textarea rows="4" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-brand-navy text-sm" placeholder="İletmek istediğiniz notu yazınız..."></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-brand-navy hover:bg-slate-800 text-white font-bold py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
+                                <span>Mesajı Gönder</span> <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-darkNavy text-slate-400 pt-16 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
+                
+                <!-- Col 1: Brand Logo & Mission -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-brand-red text-white flex items-center justify-center font-black">
+                            S
+                        </div>
+                        <span class="text-xl font-extrabold text-white">SAĞLIK<span class="text-brand-red">-YAR-</span>DER</span>
+                    </div>
+                    <p class="text-xs leading-relaxed text-slate-400 max-w-sm">
+                        Sağlık Çalışanları Yardımlaşma ve Dayanışma Derneği (2026). Türkiye'deki tüm sağlık çalışanlarının mesleki onurunu ve hukuki haklarını koruyan bağımsız sivil toplum kuruluşudur.
+                    </p>
+                    <div class="flex space-x-3 text-slate-300">
+                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-brand-red hover:text-white transition-colors" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-brand-red hover:text-white transition-colors" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-brand-red hover:text-white transition-colors" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-brand-red hover:text-white transition-colors" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Hızlı Erişim -->
+                <div>
+                    <h4 class="text-white text-sm font-bold uppercase tracking-wider mb-4">Hızlı Erişim</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#anasayfa" class="hover:text-brand-gold transition-colors">Anasayfa</a></li>
+                        <li><a href="#hakkimizda" class="hover:text-brand-gold transition-colors">Hakkımızda</a></li>
+                        <li><a href="#hakkimizda" onclick="openTab('tuzuk')" class="hover:text-brand-gold transition-colors">Dernek Tüzüğü</a></li>
+                        <li><a href="#hakkimizda" onclick="openTab('yonetim')" class="hover:text-brand-gold transition-colors">Yönetim Kurulu</a></li>
+                        <li><a href="#projeler" class="hover:text-brand-gold transition-colors">Projelerimiz</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Hizmetler -->
+                <div>
+                    <h4 class="text-white text-sm font-bold uppercase tracking-wider mb-4">Hizmetlerimiz</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#hizmetler" class="hover:text-brand-gold transition-colors">7/24 Hukuk Kalkanı</a></li>
+                        <li><a href="#hizmetler" class="hover:text-brand-gold transition-colors">Mesleki Akademi</a></li>
+                        <li><a href="#hizmetler" class="hover:text-brand-gold transition-colors">Acil Yardım Fonu</a></li>
+                        <li><a href="#hizmetler" class="hover:text-brand-gold transition-colors">Psikososyal Destek</a></li>
+                        <li><a href="#subeler" class="hover:text-brand-gold transition-colors">Şubelerimiz</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: İletişim -->
+                <div>
+                    <h4 class="text-white text-sm font-bold uppercase tracking-wider mb-4">Genel Merkez</h4>
+                    <p class="text-xs leading-relaxed mb-2">GMK Bulvarı No: 45 Çankaya / Ankara</p>
+                    <p class="text-xs font-bold text-brand-gold">Tel: 0850 308 2026</p>
+                    <p class="text-xs">destek@saglikyarder.org.tr</p>
+                </div>
+
+            </div>
+
+            <!-- Copyright Footer -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
+                <p>© 2026 SAĞLIK-YAR-DER. Tüm Hakları Saklıdır.</p>
+                <div class="flex space-x-4 mt-4 sm:mt-0">
+                    <a href="#" class="hover:text-slate-300">Gizlilik Politikası</a>
+                    <a href="#" class="hover:text-slate-300">KVKK Aydınlatma Metni</a>
+                    <a href="#" class="hover:text-slate-300">Çerez Tercihleri</a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- MODAL 1: ÜYE GİRİŞİ -->
+    <div id="loginModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-md rounded-3xl p-8 shadow-2xl relative border border-slate-200">
+            <button onclick="closeModal('loginModal')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="text-center mb-6">
+                <h3 class="text-2xl font-black text-brand-navy">Üye Portalı Girişi</h3>
+                <p class="text-xs text-slate-500 mt-1">SAĞLIK-YAR-DER Üye Paneline Erişin</p>
+            </div>
+            <form onsubmit="handleAuthSubmit(event, 'Giriş Başarılı!')" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">T.C. Kimlik No veya E-Posta</label>
+                    <input type="text" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-brand-navy text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Şifre</label>
+                    <input type="password" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-brand-navy text-sm">
+                </div>
+                <div class="flex justify-between items-center text-xs">
+                    <label class="flex items-center gap-1.5 cursor-pointer">
+                        <input type="checkbox" class="rounded text-brand-navy"> Beni Hatırla
+                    </label>
+                    <a href="#" class="text-brand-red font-bold hover:underline">Şifremi Unuttum</a>
+                </div>
+                <button type="submit" class="w-full bg-brand-navy hover:bg-slate-800 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all">
+                    Giriş Yap
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 2: ONLINE ÜYELİK BAŞVURU FORMU -->
+    <div id="registerModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white w-full max-w-lg rounded-3xl p-8 shadow-2xl relative border border-slate-200 my-8">
+            <button onclick="closeModal('registerModal')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="text-center mb-6">
+                <span class="bg-red-100 text-brand-red text-[10px] font-bold px-3 py-1 rounded-full uppercase">2026 ÜYELİK SEFERBERLİĞİ</span>
+                <h3 class="text-2xl font-black text-brand-navy mt-2">SAĞLIK-YAR-DER Üyelik Başvurusu</h3>
+                <p class="text-xs text-slate-500 mt-1">Bilgilerinizi doldurarak dayanışma ağımıza katılın.</p>
+            </div>
+            <form onsubmit="handleAuthSubmit(event, 'Üyelik başvurunuz başarıyla alındı!')" class="space-y-4">
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Ad Soyad *</label>
+                        <input type="text" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">T.C. Kimlik No *</label>
+                        <input type="text" maxlength="11" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm">
+                    </div>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Telefon *</label>
+                        <input type="tel" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">E-Posta *</label>
+                        <input type="email" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Görev Yapılan Kurum ve Şehir *</label>
+                    <input type="text" required placeholder="Örn: Ankara Bilkent Şehir Hastanesi" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm">
+                </div>
+                <div class="text-xs space-y-2">
+                    <label class="flex items-start gap-2 cursor-pointer">
+                        <input type="checkbox" required class="mt-0.5 rounded text-brand-navy">
+                        <span class="text-slate-600">SAĞLIK-YAR-DER Tüzüğünü okudum, kabul ediyorum.</span>
+                    </label>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-brand-red to-rose-700 text-white font-bold py-3.5 rounded-xl shadow-lg hover:shadow-red-900/50 transition-all">
+                    Üyelik Başvurusunu Tamamla
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 3: VIDEO PLAYER MODAL -->
+    <div id="videoModal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 w-full max-w-3xl rounded-3xl overflow-hidden shadow-2xl relative border border-slate-800">
+            <button onclick="closeModal('videoModal')" class="absolute top-4 right-4 text-white bg-slate-800 hover:bg-slate-700 w-10 h-10 rounded-full flex items-center justify-center z-10">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="p-4 border-b border-slate-800">
+                <h4 class="text-white font-bold text-sm">SAĞLIK-YAR-DER 2026 Tanıtım Filmi</h4>
+            </div>
+            <div class="aspect-video bg-black flex items-center justify-center text-slate-400">
+                <div class="text-center p-6 space-y-3">
+                    <i class="fa-solid fa-circle-play text-5xl text-brand-red animate-pulse"></i>
+                    <p class="text-sm font-semibold text-white">SAĞLIK-YAR-DER Kurumsal Tanıtım Filmi</p>
+                    <p class="text-xs text-slate-400">Canlı video yayın akışı yükleniyor...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 4: TÜZÜK İNCELEME MODALI -->
+    <div id="tuzukModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-2xl rounded-3xl p-8 shadow-2xl relative border border-slate-200">
+            <button onclick="closeModal('tuzukModal')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="text-2xl font-black text-brand-navy mb-4">Resmi Dernek Tüzüğü Metni</h3>
+            <div class="text-xs text-slate-600 space-y-3 max-h-[60vh] overflow-y-auto pr-3 leading-relaxed">
+                <p><strong>BÖLÜM 1: GENEL HÜKÜMLER</strong><br>SAĞLIK-YAR-DER, 2026 yılında sağlık çalışanlarının hak mücadelesini kurumsal ve hukuki zeminde sürdürmek amacıyla kurulmuştur.</p>
+                <p><strong>BÖLÜM 2: SOSYAL YARDIM FONU UYGULAMASI</strong><br>Dernek bütçesinin %25'i doğrudan sağlık çalışanları sosyal dayanışma fonuna aktarılır. Bu fon afet, kaza ve acil durumlarda üyelerin kullanımına sunulur.</p>
+                <p><strong>BÖLÜM 3: HUKUK KORUMASI</strong><br>Tüm üyeler, malpraktis davalarında dernek hukuk kurulunun sağladığı ücretsiz avukatlık ve danışmanlık hizmetinden yararlanma hakkına sahiptir.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-brand-navy text-white px-6 py-4 rounded-2xl shadow-2xl border border-brand-gold flex items-center space-x-3 transition-all duration-300 transform translate-y-4">
+        <i class="fa-solid fa-circle-check text-brand-gold text-xl"></i>
+        <span id="toastMsg" class="text-sm font-semibold">İşlem Başarılı!</span>
+    </div>
+
+    <!-- JAVASCRIPT CORE LOGIC -->
+    <script>
+        // 1. Canvas Node & EKG Pulse Background Animation
+        const canvas = document.getElementById('heroCanvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+
+        function resizeCanvas() {
+            width = canvas.width = canvas.offsetWidth;
+            height = canvas.height = canvas.offsetHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const particles = [];
+        const particleCount = 45;
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                vx: (Math.random() - 0.5) * 0.7,
+                vy: (Math.random() - 0.5) * 0.7,
+                radius: Math.random() * 2 + 1
+            });
+        }
+
+        function drawCanvas() {
+            ctx.clearRect(0, 0, width, height);
+
+            ctx.fillStyle = 'rgba(197, 155, 39, 0.4)';
+            ctx.strokeStyle = 'rgba(197, 155, 39, 0.08)';
+
+            for (let i = 0; i < particleCount; i++) {
+                const p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0 || p.x > width) p.vx *= -1;
+                if (p.y < 0 || p.y > height) p.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fill();
+
+                for (let j = i + 1; j < particleCount; j++) {
+                    const p2 = particles[j];
+                    const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(drawCanvas);
+        }
+        drawCanvas();
+
+        // 2. Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // 3. Tab Switcher for Kurumsal Section
+        function openTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-navy', 'text-white', 'shadow-lg');
+                btn.classList.add('bg-white', 'text-slate-700');
+            });
+
+            const targetContent = document.getElementById(`tab-content-${tabName}`);
+            if (targetContent) targetContent.classList.remove('hidden');
+
+            const activeBtn = document.getElementById(`tab-btn-${tabName}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-white', 'text-slate-700');
+                activeBtn.classList.add('bg-brand-navy', 'text-white', 'shadow-lg');
+            }
+        }
+
+        // 4. Şube Search & Region Filter
+        function searchBranches() {
+            const query = document.getElementById('branchSearch').value.toLowerCase();
+            const items = document.querySelectorAll('.branch-item');
+            items.forEach(item => {
+                const text = item.innerText.toLowerCase();
+                item.style.display = text.includes(query) ? 'block' : 'none';
+            });
+        }
+
+        function filterRegion(reg) {
+            document.querySelectorAll('.region-btn').forEach(b => {
+                b.classList.remove('bg-brand-navy', 'text-white');
+                b.classList.add('bg-slate-100', 'text-slate-700');
+            });
+            if (event && event.target && event.target.classList.contains('region-btn')) {
+                event.target.classList.remove('bg-slate-100', 'text-slate-700');
+                event.target.classList.add('bg-brand-navy', 'text-white');
+            }
+
+            const items = document.querySelectorAll('.branch-item');
+            items.forEach(item => {
+                if (reg === 'all' || item.classList.contains(reg)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // 5. Media Tabs
+        function switchMediaTab(type) {
+            document.querySelectorAll('.media-tab-btn').forEach(b => {
+                b.classList.remove('bg-brand-red', 'text-white');
+                b.classList.add('bg-slate-800', 'text-slate-300');
+            });
+            const btn = document.getElementById(`media-tab-${type}`);
+            if (btn) {
+                btn.classList.remove('bg-slate-800', 'text-slate-300');
+                btn.classList.add('bg-brand-red', 'text-white');
+            }
+
+            if (type === 'videos') {
+                document.getElementById('media-content-videos').classList.remove('hidden');
+                document.getElementById('media-content-photos').classList.add('hidden');
+            } else {
+                document.getElementById('media-content-videos').classList.add('hidden');
+                document.getElementById('media-content-photos').classList.remove('hidden');
+            }
+        }
+
+        // 6. Modals Control
+        function openModal(id) {
+            const m = document.getElementById(id);
+            if (m) m.classList.remove('hidden');
+        }
+        function closeModal(id) {
+            const m = document.getElementById(id);
+            if (m) m.classList.add('hidden');
+        }
+
+        // 7. Toast & Form Submissions
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3500);
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            showToast('Mesajınız başarıyla iletildi! Temsilcilerimiz en kısa sürede dönüş yapacaktır.');
+            e.target.reset();
+        }
+
+        function handleAuthSubmit(e, message) {
+            e.preventDefault();
+            closeModal('loginModal');
+            closeModal('registerModal');
+            showToast(message);
+        }
+
+        // 8. Live Counter Dynamic Animation
+        const counters = document.querySelectorAll('.counter');
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            let count = 0;
+            const speed = target / 80;
+            const updateCount = () => {
+                count += speed;
+                if (count < target) {
+                    counter.innerText = Math.ceil(count).toLocaleString('tr-TR');
+                    setTimeout(updateCount, 25);
+                } else {
+                    counter.innerText = target.toLocaleString('tr-TR');
+                }
+            };
+            updateCount();
+        });
+
+        // 9. Dynamic News Ticker
+        const newsTickerItems = [
+            "• 2026 Beyaz Önlük Hukuk Kalkanı ile Tüm Üyelerimize Ücretsiz Malpraktis Avukatlık Desteği Başladı.",
+            "• SAĞLIK-YAR-DER Sosyal Yardım Fonu 2026 Eğitim Bursu Başvuruları Açıldı.",
+            "• 81 İl Teşkilatında 7/24 Nöbetçi Sağlık Avukatı Hizmeti Devrede."
+        ];
+        let newsTickerIdx = 0;
+        function nextNewsTicker() {
+            newsTickerIdx = (newsTickerIdx + 1) % newsTickerItems.length;
+            document.getElementById('newsTickerText').innerText = newsTickerItems[newsTickerIdx];
+        }
+        function prevNewsTicker() {
+            newsTickerIdx = (newsTickerIdx - 1 + newsTickerItems.length) % newsTickerItems.length;
+            document.getElementById('tickerText') ? document.getElementById('tickerText').innerText = newsTickerItems[newsTickerIdx] : null;
+            document.getElementById('newsTickerText').innerText = newsTickerItems[newsTickerIdx];
+        }
+        setInterval(nextNewsTicker, 5000);
+    </script>
+</body>
+</html>
